@@ -1,0 +1,232 @@
+@use '../../lib/service.scss' as s;
+.headerplus_ad {
+    display: grid;
+    justify-content: center;
+    max-width: 1200px;
+    width: 100%;
+    
+
+}
+
+.header {
+    background-color: s.color('backgroundDark');
+    
+}
+.ad {
+    background-color: #fff;
+
+}
+.header__container, .ad__container {
+    display: flex;
+    padding: s.space(4) 0;
+    justify-content: space-between;   
+}
+
+.header__block, .ad__block {
+    display: flex;
+    gap: s.space(8);
+    align-items: center;
+ 
+}
+
+.header__icon {
+    @include s.click;
+}
+
+.header__link {
+    @include s.click;
+    color: s.color('backgroundLight');
+    font-size: s.size(small);
+}
+
+.product__content {
+    display: grid;
+    gap: s.space(5);
+    text-align: center;
+    align-content: center;
+}
+
+.product__title {
+    font-size: 56px;
+    font-weight: 600;
+    //color: s.color('fontDark');  
+}
+
+.product__descriptions {
+    font-size: 28px; //color: s.color('fontDark');
+}
+
+.product__action {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    gap: s.space(5);    
+}
+
+.product__link {
+    @include s.linkAction;
+    @include s.click;
+}
+.product {
+    @extend .section;
+    padding-top: s.space(20);
+    padding-bottom: s.space(20);
+    background-repeat: no-repeat;
+    background-position: bottom center;
+}
+
+
+.product--big {
+    max-height: 700px;
+    height: 100vh;
+    background-size: cover;
+    
+    @media all and (width < s.screen(tablet)) {
+        background-size: 150%;  
+        max-height: 500px;
+}
+}
+
+.product--small {
+    max-height: 580px;
+    height: 50vh;
+    background-size: cover;
+    
+    @media all and (width < s.screen(tablet)) {
+        background-size: 150%;  
+        max-height: 500px;
+}
+}
+
+.product--small {
+    
+    .product__title {
+        font-size: 40px;
+    }
+    .product__descriptions {
+        font-size: 20px;
+    }
+    
+}
+
+.product--dark {
+    .product__title,.product__descriptions {
+        color: s.color('background');
+        
+    }
+}
+
+.product--light {
+    .product__title,.product__description {
+        color: s.color('fontDark');
+        
+    }
+}
+
+.product--top {
+    .product__content {
+        align-content: flex-start;
+      
+    }
+
+    
+}
+
+.product--bottom {
+    .product__content {
+        align-content: flex-end;  
+    }
+}
+
+
+
+$productImage:(
+    'iphone-pro' '/img/iPhone Pro.png' black,
+    'iphone' '/img/iPhone.png' #fafafa,
+    'iwatch' '/img/iWatch.png' black,
+    'trade_in' '/img/trade_in.png' #FBFBFD,
+    'conference' '/img/veselka.png' black,
+    'ipad' '/img/ipad.png' #FBFBFD,
+    'small_business' '/img/small_business.png' #FBFBFD,
+    'gift' '/img/gift.png' #FBFBFD,
+    'card' '/img/card.png' #FBFBFD, 
+);
+
+@each $class, $url, $color in $productImage {
+    .product--#{$class} {
+        background-image: url($url);
+        background-color: $color;
+    }
+}
+
+.section__double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+
+    .product {
+            padding-top: 0;
+            padding-bottom: 0;
+    }
+
+    .product--top {
+        padding-top: s.space(5);
+            
+    }
+
+    .product--bottom {
+        padding-bottom: s.space(5);
+    }
+    
+
+    @media all and (width < s.screen(tablet)) {
+        grid-template-columns: 1fr;
+    }
+}
+
+footer {
+    @extend .section;
+    display: flex;
+    padding-top: s.space(10);
+    padding-bottom: s.space(10);
+    background-color: s.color('background');
+    text-align: left;
+    gap: s.space(10);
+    font-size: s.size(small);
+
+    @media all and (width < s.screen(tablet)) {
+       display: grid;
+       grid-template-columns: 1fr 1fr 1fr;
+       grid-template-rows: 1fr 1fr;
+         gap: s.space(5);
+
+    }
+}
+
+
+
+.column_link {
+    display: flex;
+    flex-direction: column;
+    gap: s.space(2);
+}
+
+.footer_title {
+    
+    font-weight: 600;
+}
+
+.footer_link {
+    @include s.click;
+   
+    color: s.color('backgroundDark');
+}
+
+.product--small_business {
+    .product__content {
+        text-align: center;
+        max-width: 276px;
+    }
+}
+

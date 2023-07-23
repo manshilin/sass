@@ -1,0 +1,4 @@
+
+@function space ($num: 1) {
+  @return $num * 4px;
+}
